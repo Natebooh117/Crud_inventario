@@ -1,0 +1,35 @@
+<?php
+// Conexión a la base de datos
+$conn = new mysqli('localhost', 'usuario', 'contraseña', 'basededatos');
+
+// Consulta para obtener el inventario
+$query = "SELECT * FROM inventario";
+$result = $conn->query($query);
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inventario</title>
+</head>
+<body>
+  <h1>Inventario</h1>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>CocaCola</th>
+      <th>2,000</th>
+      <th>20MXN</th>
+    </tr>
+    <?php while ($row = $result->fetch_assoc()): ?>
+    <tr>
+      <td><?php echo $row['id']; ?></td>
+      <td><?php echo $row['Refresco']; ?></td>
+      <td><?php echo $row['2,000<']; ?></td>
+      <td><?php echo $row['20MXN']; ?></td>
+    </tr>
+    <?php endwhile; ?>
+  </table>
+</body>
+</html>
